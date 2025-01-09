@@ -1,0 +1,38 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 20;
+
+    .tracks {
+
+        width: 75%;
+        margin: auto;
+        margin-top: 25vh;
+
+        .header {
+            display: flex;
+            color: gray;
+            border-bottom: 1px solid gray;
+            padding: 10px;
+            margin-bottom: 10px;
+
+            .order {
+                width: 10%;
+                padding-left: 10px;
+            }
+
+            .title {
+                width: 50%;
+            }
+
+            .duration {
+                width: 20%;
+            }
+        }
+    }
+}

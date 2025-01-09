@@ -1,6 +1,5 @@
-import danceTheNight from "/dance-the-night.mp3";
+
 import gsap from "gsap";
-console.log(danceTheNight);
 
 class AudioController {
   constructor() {}
@@ -9,7 +8,7 @@ class AudioController {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
 
     this.audio = new Audio();
-    this.audio.src = danceTheNight;
+    // this.audio.src = danceTheNight;
     this.audio.volume = 0.1;
 
     this.audioSource = this.ctx.createMediaElementSource(this.audio);
@@ -24,14 +23,16 @@ class AudioController {
     this.audioSource.connect(this.analyserNode);
     this.audioSource.connect(this.ctx.destination);
 
-    this.audio.play();
-
     gsap.ticker.add(this.tick);
   }
 
   tick = () => {
     this.analyserNode.getByteFrequencyData(this.fdata);
   };
+
+  play = () => {
+    this.audio.play();
+  }
 }
 
 const audioController = new AudioController();
