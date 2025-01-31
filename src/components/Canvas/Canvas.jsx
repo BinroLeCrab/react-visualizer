@@ -17,9 +17,6 @@ const Canvas = () => {
   }, []);
 
   return <>
-    <button className="play" onClick={onClick}>
-      Play
-    </button>
     <canvas ref={canvasRef}></canvas>;
   </>
 };

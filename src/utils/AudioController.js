@@ -1,4 +1,3 @@
-
 import gsap from "gsap";
 
 class AudioController {
@@ -26,13 +25,14 @@ class AudioController {
     gsap.ticker.add(this.tick);
   }
 
+  play = (src) => {
+    this.audio.src = src;
+    this.audio.play();
+  };
+
   tick = () => {
     this.analyserNode.getByteFrequencyData(this.fdata);
   };
-
-  play = () => {
-    this.audio.play();
-  }
 }
 
 const audioController = new AudioController();
