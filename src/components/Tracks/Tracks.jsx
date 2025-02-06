@@ -2,6 +2,7 @@ import Track from "../Track/Track";
 
 import s from "./Tracks.module.scss";
 import { useEffect, useState } from "react";
+import fetchJsonp from "fetch-jsonp";
 import useStore from "../../utils/store";
 import { fetchMetadata } from "../../utils/utils";
 import TRACKS from "../../utils/TRACKS";
@@ -28,12 +29,47 @@ const Tracks = () => {
         fetchMetadata(TRACKS, tracks, setTracks);
     }, []);
 
+    const onKeyDown = (e) => {
+        if (e.keyCode === 13 && e.target.value !== "") {
+            // l'utilisateur à appuyé sur la touche entrée
+            const userInput = e.target.value;
+
+            //appeler la fontcion
+            getSongs(userInput);
+        }
+    };
+
+    const getSongs = async (userInput) => {
+        let response = await fetchJsonp(
+            `https://api.deezer.com/search?q=${userInput}&output=jsonp`
+        );
+
+        if (response.ok) {
+            response = await response.json();
+
+            const _tracks = [...tracks];
+
+            response.data.forEach((result) => {
+                _tracks.push(result);
+            });
+
+            console.log(_tracks);
+            setTracks(_tracks);
+        } else {
+        }
+
+        console.log(response);
+    };
+
     return (
         <>
             <div
                 className={s.toggleTracks}
                 onClick={() => setShowTracks(!showTracks)}
-            ></div>
+            >
+                <img src="cassette-tape.svg" alt="" />
+                Tracklist
+            </div>
 
             <section
                 className={`
@@ -52,12 +88,19 @@ const Tracks = () => {
                             key={track.title + i}
                             title={track.title}
                             duration={track.duration}
-                            cover={track.cover}
-                            artists={track.artists}
-                            src={track.path}
+                            cover={track.album.cover_xl}
+                            // artists={track.artists}
+                            src={track.preview}
                             index={i}
                         />
                     ))}
+
+                    <input
+                        type="text"
+                        placeholder="Chercher un artiste"
+                        className={s.searchInput}
+                        onKeyDown={onKeyDown}
+                    />
                 </div>
             </section>
         </>

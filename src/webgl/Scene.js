@@ -14,6 +14,8 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import Line from "./objects/Line";
 import Board from "./objects/Board";
 import LogoIut from "./objects/Logoiut";
+import Cover from "./objects/Cover";
+import audioController from "../utils/AudioController";
 
 class Scene {
   constructor() { }
@@ -32,7 +34,7 @@ class Scene {
     this.setupControls();
     this.setupStats();
     this.setupPostprocessing();
-    this.setupGUI();
+    // this.setupGUI();
 
     this.setupTextureLoader();
     this.setupGLTFLoader();
@@ -108,12 +110,13 @@ class Scene {
     this.line = new Line();
     this.board = new Board();
     this.logoIut = new LogoIut();
+    this.cover = new Cover();
     // ....
 
-    this.camera.position.z = 150;
+    this.camera.position.z = 10;
 
-    this.scene.add(this.line.group);
-    this.currentObject = this.line;
+    this.scene.add(this.cover.group);
+    this.currentObject = this.cover;
 
     //Board
     // this.scene.add(this.board.group);
@@ -127,6 +130,7 @@ class Scene {
     this.camera.updateProjectionMatrix();
 
     this.renderer.setSize(this.width, this.height);
+    this.composer.setSize(this.width, this.height);
   };
 
   addEvents() {
@@ -165,12 +169,23 @@ class Scene {
 
     switch (index) {
       case 0:
+        // Cover
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 0.74;
+        this.bloomPass.radius = 0.2;
+        this.currentObject = this.cover;
+        this.camera.position.z = 10;
+        break;
+      case 1:
         // Line
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 0.74;
+        this.bloomPass.radius = 0.2;
         this.currentObject = this.line;
         this.camera.position.z = 150;
         break;
 
-      case 1:
+      case 2:
         // Board
         this.bloomPass.threshold = 0.04;
         this.bloomPass.strength = 0.5;
@@ -179,7 +194,7 @@ class Scene {
         this.camera.position.z = 20;
         break;
 
-      case 2:
+      case 3:
         // Logo Iut
         this.bloomPass.threshold = 0;
         this.bloomPass.strength = 1.008;
@@ -201,8 +216,8 @@ class Scene {
 
     this.composer.render(this.scene, this.camera);
 
-    if (this.currentObject) {
-      this.currentObject.update();
+    if (this.currentObject && audioController.fdata) {
+      this.currentObject.update(time);
     }
 
     this.stats.end();

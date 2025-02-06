@@ -4,14 +4,17 @@ import s from "./Picker.module.scss";
 
 const VISUALIZERS = [
     {
-        name: "Line",
+        name: "Cover",
         index: 0,
     }, {
-        name: "Board",
+        name: "Line",
         index: 1,
     }, {
-        name: "Logo Iut",
+        name: "Board",
         index: 2,
+    }, {
+        name: "Logo Iut",
+        index: 3,
     }
 ];
 

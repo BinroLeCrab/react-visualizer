@@ -21,7 +21,9 @@
     .tracks {
         width: 75%;
         margin: auto;
-        margin-top: 25vh;
+        margin-top: 10vh;
+        max-height: 70vh;
+        overflow-y: auto;
 
         .header {
             display: flex;
@@ -46,14 +48,36 @@
     }
 }
 
+.searchInput {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    color: white;
+    padding-bottom: 8px;
+    border-bottom: solid 2px white;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-transform: uppercase;
+
+    max-width: 300px;
+    font-size: 16px;
+}
+
 .toggleTracks {
     position: fixed;
     bottom: 24px;
     left: 24px;
-    width: 58px;
-    height: 58px;
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
     pointer-events: all;
+    color: white;
+    text-transform: uppercase;
     z-index: 2;
 }
