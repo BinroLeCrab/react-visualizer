@@ -1,6 +1,6 @@
 import jsmediatags from "jsmediatags/dist/jsmediatags.min.js";
 
-export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
+export const fetchMetadata = async (TRACKS, tracks, setTracks, setConstTracks) => {
     const promises = TRACKS.map(
         (track) =>
             new Promise((resolve, reject) => {
@@ -30,17 +30,15 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
                                         );
                                         cover = `data:${picture.format};base64,${base64String}`;
                                     }
-                                    let _artists = [];
-                                    if (artist) {
-                                        _artists = artist.split(",");
-                                    }
 
                                     resolve({
                                         index: track.id,
                                         name: track.name,
                                         title: title || track.name,
                                         duration: audio.duration,
-                                        artists: _artists || [],
+                                        artist: {
+                                            name: artist || track.artist || "Unknown Artist",
+                                        },
                                         album: {
                                             cover_medium: cover,
                                             cover_xl: cover,
@@ -59,7 +57,9 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
                                         name: track.name,
                                         title: track.name,
                                         duration: audio.duration,
-                                        artists: [],
+                                        artist: {
+                                            name: track.artist || "Unknown Artist",
+                                        },
                                         album: {
                                             cover_medium: cover,
                                             cover_xl: cover,
@@ -88,8 +88,11 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks) => {
             _tracks.push(result);
         });
 
+        
+
         // màj le store
         setTracks(_tracks);
+        setConstTracks(_tracks);
 
         // _tracks.push(results)
     } catch (error) {

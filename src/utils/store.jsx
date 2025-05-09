@@ -6,6 +6,11 @@ const useStore = create((set) => ({
         set(() => ({
             tracks: _tracks,
         })),
+    constTracks: [],
+    setConstTracks: (_tracks) =>
+        set(() => ({
+            constTracks: _tracks,
+        })),
 }));
 
 export default useStore;

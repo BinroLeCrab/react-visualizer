@@ -10,7 +10,7 @@ import TRACKS from "../../utils/TRACKS";
 const Tracks = () => {
     // permet d'alterner entre true et false pour afficher / cacher le composant
     const [showTracks, setShowTracks] = useState(false);
-    const { tracks, setTracks } = useStore();
+    const { tracks, setTracks, constTracks, setConstTracks } = useStore();
 
     // écouter la variable tracks qui vient du store
     useEffect(() => {
@@ -26,7 +26,7 @@ const Tracks = () => {
     // TODO : Récupérer les tracks du store
 
     useEffect(() => {
-        fetchMetadata(TRACKS, tracks, setTracks);
+        fetchMetadata(TRACKS, tracks, setTracks, setConstTracks);
     }, []);
 
     const onKeyDown = (e) => {
@@ -47,7 +47,7 @@ const Tracks = () => {
         if (response.ok) {
             response = await response.json();
 
-            const _tracks = [...tracks];
+            const _tracks = [...constTracks];
 
             response.data.forEach((result) => {
                 _tracks.push(result);
@@ -89,7 +89,7 @@ const Tracks = () => {
                             title={track.title}
                             duration={track.duration}
                             cover={track.album.cover_xl}
-                            // artists={track.artists}
+                            artist={track?.artist}
                             src={track.preview}
                             index={i}
                         />
