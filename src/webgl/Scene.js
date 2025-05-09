@@ -16,6 +16,7 @@ import Board from "./objects/Board";
 import LogoIut from "./objects/Logoiut";
 import Cover from "./objects/Cover";
 import audioController from "../utils/AudioController";
+import Cube from "./objects/Cube";
 
 class Scene {
   constructor() { }
@@ -111,12 +112,15 @@ class Scene {
     this.board = new Board();
     this.logoIut = new LogoIut();
     this.cover = new Cover();
+    this.cube = new Cube();
     // ....
 
     this.camera.position.z = 10;
 
-    this.scene.add(this.cover.group);
-    this.currentObject = this.cover;
+    // this.scene.add(this.cover.group);
+    // this.currentObject = this.cover;
+    this.scene.add(this.cube.group);
+    this.currentObject = this.cube;
 
     //Board
     // this.scene.add(this.board.group);
@@ -217,7 +221,7 @@ class Scene {
     this.composer.render(this.scene, this.camera);
 
     if (this.currentObject && audioController.fdata) {
-      this.currentObject.update(time);
+      this.currentObject.update(time, deltaTime);
     }
 
     this.stats.end();
