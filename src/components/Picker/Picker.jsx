@@ -15,6 +15,9 @@ const VISUALIZERS = [
     }, {
         name: "Logo Iut",
         index: 3,
+    }, {
+        name: "Cube",
+        index: 4,
     }
 ];
 

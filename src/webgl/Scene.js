@@ -117,10 +117,8 @@ class Scene {
 
     this.camera.position.z = 10;
 
-    // this.scene.add(this.cover.group);
-    // this.currentObject = this.cover;
-    this.scene.add(this.cube.group);
-    this.currentObject = this.cube;
+    this.scene.add(this.cover.group);
+    this.currentObject = this.cover;
 
     //Board
     // this.scene.add(this.board.group);
@@ -206,6 +204,15 @@ class Scene {
         this.currentObject = this.logoIut;
         this.camera.position.z = 5;
         break;
+
+      case 4:
+          // Logo Iut
+          this.bloomPass.threshold = 0;
+          this.bloomPass.strength = 1.008;
+          this.bloomPass.radius = 0.545;
+          this.currentObject = this.cube;
+          this.camera.position.z = 5;
+          break;
 
       default:
         break;
