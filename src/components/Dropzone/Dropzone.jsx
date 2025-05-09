@@ -7,7 +7,7 @@ import { fetchMetadata } from "../../utils/utils";
 import Button from "../Button/Button";
 
 const Dropzone = () => {
-    const { tracks, setTracks } = useStore();
+    const { tracks, setTracks, constTracks, setConstTracks } = useStore();
 
     const onDrop = useCallback(
         (acceptedFiles) => {
@@ -27,7 +27,7 @@ const Dropzone = () => {
                 tracksArray.push(_track);
             });
 
-            fetchMetadata(tracksArray, tracks, setTracks);
+            fetchMetadata(tracksArray, constTracks, setTracks, setConstTracks);
         },
         [tracks]
     );

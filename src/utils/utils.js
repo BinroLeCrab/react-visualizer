@@ -1,5 +1,7 @@
 import jsmediatags from "jsmediatags/dist/jsmediatags.min.js";
 
+let coverPlaceholder = "https://placehold.co/400x400";
+
 export const fetchMetadata = async (TRACKS, tracks, setTracks, setConstTracks) => {
     const promises = TRACKS.map(
         (track) =>
@@ -21,7 +23,7 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks, setConstTracks) =
                                 onSuccess: (tag) => {
                                     const { title, artist, album, picture } = tag.tags;
                                     // Extract cover image if it exists
-                                    let cover = "https://placehold.co/600x400";
+                                    let cover = coverPlaceholder; // Default cover image
                                     if (picture) {
                                         const base64String = btoa(
                                             picture.data
@@ -61,9 +63,9 @@ export const fetchMetadata = async (TRACKS, tracks, setTracks, setConstTracks) =
                                             name: track.artist || "Unknown Artist",
                                         },
                                         album: {
-                                            cover_medium: cover,
-                                            cover_xl: cover,
-                                            title: album || "Unknown Album",
+                                            cover_medium: coverPlaceholder,
+                                            cover_xl: coverPlaceholder,
+                                            title: "Unknown Album",
                                         },
                                         preview: track.path,
                                     });
