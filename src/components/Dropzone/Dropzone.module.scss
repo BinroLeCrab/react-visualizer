@@ -32,16 +32,43 @@
             }
         }
     }
+}
 
-    .import {
-        position: absolute;
-        bottom: 12px;
-        right: 12px;
+.import {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 12px;
+    bottom: 0;
+    right: 0;
+    color: white;
+    height: 48px;
+    z-index: 3;
+
+    p {
+        margin: 0;
+        font-size: 0.875rem;
+        text-wrap: nowrap;
+        text-align: right;
+    }
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-left: 1px solid var(--white);
+        background-color: transparent;
         color: white;
+        text-transform: uppercase;
+        padding: 8px;
+        gap: 8px;
+        padding-left: 12px;
+        height: 48px;
 
-        p {
-            max-width: 200px;
-            margin: 0;
+        &:hover {
+            background-color: rgba(white, 0.1);
         }
     }
 }

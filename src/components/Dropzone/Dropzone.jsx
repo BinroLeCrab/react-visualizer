@@ -5,6 +5,7 @@ import useStore from "../../utils/store";
 import { fetchMetadata } from "../../utils/utils";
 
 import Button from "../Button/Button";
+import { MusicNotesPlus } from "@phosphor-icons/react";
 
 const Dropzone = () => {
     const { tracks, setTracks, constTracks, setConstTracks } = useStore();
@@ -43,32 +44,39 @@ const Dropzone = () => {
     });
 
     return (
-        <div
-            {...getRootProps()}
-            className={`
+        <>
+            <div
+                {...getRootProps()}
+                className={`
       ${s.dropzone} 
       ${isDragActive ? s.dropzone_active : ""}
       `}
-        >
-            <input {...getInputProps()} />
+            >
+                <input {...getInputProps()} />
 
-            {isDragActive && (
-                // l'utilisateur est en train de drag and drop, afficher la dropzone
-                <div className={s.outer}>
-                    <div className={s.inner}>
-                        <p>Déposez vos fichiers dans cette zone</p>
+                {isDragActive && (
+                    // l'utilisateur est en train de drag and drop, afficher la dropzone
+                    <div className={s.outer}>
+                        <div className={s.inner}>
+                            <p>Déposez vos fichiers dans cette zone</p>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+
+
+            </div>
 
             <div className={s.import}>
                 <p>
                     Importez vos fichiers .mp3 avec un drag and drop ou en cliquant sur le
                     bouton.
                 </p>
-                <Button label={"Browse"} onClick={open} />
+                <button className={s.btn} onClick={open}>
+                    <MusicNotesPlus size={32} color="currentColor" />
+                    Importer
+                </button>
             </div>
-        </div>
+        </>
     );
 };
 

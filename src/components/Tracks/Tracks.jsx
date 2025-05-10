@@ -7,9 +7,8 @@ import useStore from "../../utils/store";
 import { fetchMetadata } from "../../utils/utils";
 import TRACKS from "../../utils/TRACKS";
 
-const Tracks = () => {
+const Tracks = ({showTracks ,setShowTracks}) => {
     // permet d'alterner entre true et false pour afficher / cacher le composant
-    const [showTracks, setShowTracks] = useState(false);
     const { tracks, setTracks, constTracks, setConstTracks } = useStore();
 
     // écouter la variable tracks qui vient du store
@@ -63,13 +62,6 @@ const Tracks = () => {
 
     return (
         <>
-            <div
-                className={s.toggleTracks}
-                onClick={() => setShowTracks(!showTracks)}
-            >
-                <img src="cassette-tape.svg" alt="" />
-                Tracklist
-            </div>
 
             <section
                 className={`

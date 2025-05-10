@@ -66,18 +66,3 @@
     max-width: 300px;
     font-size: 16px;
 }
-
-.toggleTracks {
-    position: fixed;
-    bottom: 24px;
-    left: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    pointer-events: all;
-    color: white;
-    text-transform: uppercase;
-    z-index: 2;
-}
