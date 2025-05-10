@@ -1,9 +1,9 @@
-.track {
+.trackList {
     display: flex;
     align-items: center;
     color: white;
     padding: 10px;
-    border-radius: 8px;
+    cursor: pointer;
 
     &:hover {
         background-color: rgba(white, 0.1);

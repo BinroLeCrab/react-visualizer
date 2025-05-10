@@ -6,8 +6,9 @@ import fetchJsonp from "fetch-jsonp";
 import useStore from "../../utils/store";
 import { fetchMetadata } from "../../utils/utils";
 import TRACKS from "../../utils/TRACKS";
+import { Cross, MagnifyingGlass, X } from "@phosphor-icons/react";
 
-const Tracks = ({showTracks ,setShowTracks}) => {
+const Tracks = ({ showTracks, setShowTracks }) => {
     // permet d'alterner entre true et false pour afficher / cacher le composant
     const { tracks, setTracks, constTracks, setConstTracks } = useStore();
 
@@ -18,12 +19,6 @@ const Tracks = ({showTracks ,setShowTracks}) => {
         }
     }, [tracks]);
 
-    // TODO : Slider (infini ou non) pour sélectionner les tracks
-
-    // TODO : Fonction de tri / filtre sur les tracks, par nom, durée...
-
-    // TODO : Récupérer les tracks du store
-
     useEffect(() => {
         fetchMetadata(TRACKS, tracks, setTracks, setConstTracks);
     }, []);
@@ -32,6 +27,8 @@ const Tracks = ({showTracks ,setShowTracks}) => {
         if (e.keyCode === 13 && e.target.value !== "") {
             // l'utilisateur à appuyé sur la touche entrée
             const userInput = e.target.value;
+
+            e.target.value = "";
 
             //appeler la fontcion
             getSongs(userInput);
@@ -68,31 +65,45 @@ const Tracks = ({showTracks ,setShowTracks}) => {
                 ${s.wrapper}
                 ${showTracks ? s.wrapper_visible : ""}`}
             >
-                <div className={s.tracks}>
-                    <div className={s.header}>
-                        <span className={s.order}>#</span>
-                        <span className={s.title}>Titre</span>
-                        <span className={s.duration}>Durée</span>
+                <div className={s.tracksPopup}>
+                    <div className={s.popupHeader}>
+                        <MagnifyingGlass size={32} className={s.searchIcon} color="currentColor" />
+                        <input
+                            type="text"
+                            placeholder="Chercher un artiste ou un morceau"
+                            className={s.searchInput}
+                            onKeyDown={onKeyDown}
+                        />
+                        <div
+                            className={s.closeButton}
+                            onClick={() => setShowTracks(false)}
+                        >
+                            <X size={32} color="currentColor" />
+                        </div>
                     </div>
 
-                    {tracks.map((track, i) => (
-                        <Track
-                            key={track.title + i}
-                            title={track.title}
-                            duration={track.duration}
-                            cover={track.album.cover_xl}
-                            artist={track?.artist}
-                            src={track.preview}
-                            index={i}
-                        />
-                    ))}
+                    <div className={s.tracksList}>
+                        <div className={s.header}>
+                            <span className={s.order}>#</span>
+                            <span className={s.title}>Titre</span>
+                            <span className={s.duration}>Durée</span>
+                        </div>
 
-                    <input
-                        type="text"
-                        placeholder="Chercher un artiste"
-                        className={s.searchInput}
-                        onKeyDown={onKeyDown}
-                    />
+                        {tracks.map((track, i) => (
+                            <Track
+                                variant="list"
+                                key={track.title + i}
+                                title={track.title}
+                                duration={track.duration}
+                                cover={track.album.cover_xl}
+                                artist={track?.artist}
+                                src={track.preview}
+                                index={i}
+                            />
+                        ))}
+                    </div>
+
+
                 </div>
             </section>
         </>

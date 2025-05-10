@@ -5,7 +5,7 @@
     overflow-y: auto;
     width: 100%;
     height: 100vh;        
-    background-color: rgba(black, 0.8);
+    background-color: rgba(black, 0.9);
     pointer-events: none;
     opacity: 0;
     z-index: 1;
@@ -18,20 +18,71 @@
 
     
 
-    .tracks {
+    .tracksPopup {
         width: 75%;
         margin: auto;
-        margin-top: 10vh;
-        max-height: 70vh;
-        overflow-y: auto;
+        margin-top: 5vh;
+        height: 80vh;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        .popupHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+            min-height: 48px;
+            border-bottom: solid 1px white;
+
+            .searchIcon {
+                padding: 8px;
+                width: 48px;
+                height: 48px;
+            }
+
+            .searchInput {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                height: 48px;
+                padding: 8px 12px;
+                padding-left: 0;
+                text-transform: uppercase;
+                width: 100%;
+                color: white;
+            }
+
+            .closeButton {
+                border-left: 1px solid white;
+                color: white;
+                cursor: pointer;
+                min-width: 48px;
+                height: 48px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.2s;
+                &:hover {
+                    background-color: rgba(white, 0.1);
+                }
+            }
+        }
+        
+        .tracksList {
+            overflow-y: auto;
+            flex: 1;
+        }
 
         .header {
+            position: sticky;
             display: flex;
             color: gray;
+            background-color: rgba(black, 0.8);
             border-bottom: solid 1px gray;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            padding-left: 10px;
+            padding: 10px;
+            top: 0;
 
             .order {
                 width: 10%;
@@ -46,23 +97,4 @@
             }
         }
     }
-}
-
-.searchInput {
-    background-color: transparent;
-    border: none;
-    outline: none;
-
-    color: white;
-    padding-bottom: 8px;
-    border-bottom: solid 2px white;
-    position: absolute;
-    bottom: 5%;
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-transform: uppercase;
-
-    max-width: 300px;
-    font-size: 16px;
 }
