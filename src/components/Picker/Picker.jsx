@@ -32,7 +32,7 @@ const VISUALIZERS = [
 
 const Picker = () => {
 
-    const [current, setCurrent] = useState(0);
+    const [current, setCurrent] = useState(5);
 
     const pickVisualizer = (index) => {
         setCurrent(index);

@@ -5,7 +5,7 @@ import scene from "../Scene";
 export default class Cd {
     constructor() {
 
-        this.group = null;
+        this.group = new THREE.Group();
 
         this.matcap = scene.textureLoader.load('/textures/philipsDisk.png', (texture) => {
             texture.flipY = false;
@@ -21,7 +21,7 @@ export default class Cd {
         scene.gltfLoader.load('/models/newcdbinro.gltf', (gltf) => {
             console.log(gltf);
 
-            this.group = gltf.scene; //Ici on récupère un THREE.Group
+            this.group.add(gltf.scene); //Ici on récupère un THREE.Group
 
             this.group.traverse((object) => {
 
@@ -44,6 +44,7 @@ export default class Cd {
             this.group.position.x = 0;
             this.group.position.y = 0;
             this.group.position.z = 0;
+
         });
     }
 

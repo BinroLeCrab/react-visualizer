@@ -87,6 +87,10 @@ class Scene {
       this.bloomParams.radius
     );
 
+    this.bloomPass.threshold = 0;
+    this.bloomPass.strength = 0.5;
+    this.bloomPass.radius = 0.1;
+
     this.composer.addPass(this.renderPass);
     this.composer.addPass(this.bloomPass);
   }
@@ -110,8 +114,8 @@ class Scene {
 
   setupLights() {
     this.spotLight = new THREE.SpotLight(0xA2D8FF);
-    this.spotLight.position.set(5, 5, 5);
-    this.spotLight.intensity = 100;
+    this.spotLight.position.set(3.5, 3.5, 5);
+    this.spotLight.intensity = 50;
     this.spotLight.lookAt(0, 0, 0);
 
     this.scene.add(this.spotLight);
@@ -119,144 +123,145 @@ class Scene {
     this.ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.8);
     this.scene.add(this.ambientLight);
   }
-    addObjects() {
-      // Line
-      this.line = new Line();
-      this.board = new Board();
-      this.logoIut = new LogoIut();
-      this.cover = new Cover();
-      this.cube = new Cube();
-      this.cd = new Cd();
-      // ....
+  
+  addObjects() {
+    // Line
+    this.line = new Line();
+    this.board = new Board();
+    this.logoIut = new LogoIut();
+    this.cover = new Cover();
+    this.cube = new Cube();
+    this.cd = new Cd();
+    // ....
 
-      this.camera.position.z = 10;
+    this.camera.position.z = 2;
 
-      this.scene.add(this.cover.group);
-      this.currentObject = this.cover;
+    this.scene.add(this.cd.group);
+    this.currentObject = this.cd;
 
-      //Board
-      // this.scene.add(this.board.group);
-    }
-
-    onResize = () => {
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
-
-      this.camera.aspect = this.width / this.height;
-      this.camera.updateProjectionMatrix();
-
-      this.renderer.setSize(this.width, this.height);
-      this.composer.setSize(this.width, this.height);
-    };
-
-    addEvents() {
-      gsap.ticker.add(this.tick);
-      window.addEventListener("resize", this.onResize);
-    }
-
-    setupScene() {
-      this.scene = new THREE.Scene();
-    }
-
-    setupCamera() {
-      this.camera = new THREE.PerspectiveCamera(
-        75,
-        this.width / this.height,
-        0.1,
-        1000
-      );
-
-    }
-
-    setupRenderer() {
-      this.renderer = new THREE.WebGLRenderer({
-        canvas: this.canvas,
-        antialias: false,
-      });
-
-      this.renderer.setSize(this.width, this.height);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    }
-
-    pickVisualizer(index) {
-
-      // on remove l'ancien groupe
-      this.scene.remove(this.currentObject.group);
-
-      switch (index) {
-        case 0:
-          // Cover
-          this.bloomPass.threshold = 0;
-          this.bloomPass.strength = 0.74;
-          this.bloomPass.radius = 0.2;
-          this.currentObject = this.cover;
-          this.camera.position.z = 10;
-          break;
-        case 1:
-          // Line
-          this.bloomPass.threshold = 0;
-          this.bloomPass.strength = 0.74;
-          this.bloomPass.radius = 0.2;
-          this.currentObject = this.line;
-          this.camera.position.z = 150;
-          break;
-
-        case 2:
-          // Board
-          this.bloomPass.threshold = 0.04;
-          this.bloomPass.strength = 0.5;
-          this.bloomPass.radius = 0.85;
-          this.currentObject = this.board;
-          this.camera.position.z = 20;
-          break;
-
-        case 3:
-          // Logo Iut
-          this.bloomPass.threshold = 0;
-          this.bloomPass.strength = 1.008;
-          this.bloomPass.radius = 0.545;
-          this.currentObject = this.logoIut;
-          this.camera.position.z = 5;
-          break;
-
-        case 4:
-          // Cube
-          this.bloomPass.threshold = 0;
-          this.bloomPass.strength = 1.008;
-          this.bloomPass.radius = 0.545;
-          this.currentObject = this.cube;
-          this.camera.position.z = 5;
-          break;
-
-        case 5:
-          // CD
-          this.bloomPass.threshold = 0;
-          this.bloomPass.strength = 0.5;
-          this.bloomPass.radius = 0.1;
-          this.currentObject = this.cd;
-          this.camera.position.z = 2;
-          break;
-
-        default:
-          break;
-      }
-
-      // on add le nouveau groupe
-      this.scene.add(this.currentObject.group);
-    }
-
-    tick = (time, deltaTime, frame) => {
-      this.stats.begin();
-
-      this.composer.render(this.scene, this.camera);
-
-      if (this.currentObject && audioController.fdata) {
-        this.currentObject.update(time, deltaTime);
-      }
-
-      this.stats.end();
-    };
+    //Board
+    // this.scene.add(this.board.group);
   }
 
-  const scene = new Scene();
+  onResize = () => {
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+
+    this.camera.aspect = this.width / this.height;
+    this.camera.updateProjectionMatrix();
+
+    this.renderer.setSize(this.width, this.height);
+    this.composer.setSize(this.width, this.height);
+  };
+
+  addEvents() {
+    gsap.ticker.add(this.tick);
+    window.addEventListener("resize", this.onResize);
+  }
+
+  setupScene() {
+    this.scene = new THREE.Scene();
+  }
+
+  setupCamera() {
+    this.camera = new THREE.PerspectiveCamera(
+      75,
+      this.width / this.height,
+      0.1,
+      1000
+    );
+
+  }
+
+  setupRenderer() {
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: false,
+    });
+
+    this.renderer.setSize(this.width, this.height);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  }
+
+  pickVisualizer(index) {
+
+    // on remove l'ancien groupe
+    this.scene.remove(this.currentObject.group);
+
+    switch (index) {
+      case 0:
+        // Cover
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 0.74;
+        this.bloomPass.radius = 0.2;
+        this.currentObject = this.cover;
+        this.camera.position.z = 10;
+        break;
+      case 1:
+        // Line
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 0.74;
+        this.bloomPass.radius = 0.2;
+        this.currentObject = this.line;
+        this.camera.position.z = 150;
+        break;
+
+      case 2:
+        // Board
+        this.bloomPass.threshold = 0.04;
+        this.bloomPass.strength = 0.5;
+        this.bloomPass.radius = 0.85;
+        this.currentObject = this.board;
+        this.camera.position.z = 20;
+        break;
+
+      case 3:
+        // Logo Iut
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 1.008;
+        this.bloomPass.radius = 0.545;
+        this.currentObject = this.logoIut;
+        this.camera.position.z = 5;
+        break;
+
+      case 4:
+        // Cube
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 1.008;
+        this.bloomPass.radius = 0.545;
+        this.currentObject = this.cube;
+        this.camera.position.z = 5;
+        break;
+
+      case 5:
+        // CD
+        this.bloomPass.threshold = 0;
+        this.bloomPass.strength = 0.5;
+        this.bloomPass.radius = 0.1;
+        this.currentObject = this.cd;
+        this.camera.position.z = 2;
+        break;
+
+      default:
+        break;
+    }
+
+    // on add le nouveau groupe
+    this.scene.add(this.currentObject.group);
+  }
+
+  tick = (time, deltaTime, frame) => {
+    this.stats.begin();
+
+    this.composer.render(this.scene, this.camera);
+
+    if (this.currentObject && audioController.fdata) {
+      this.currentObject.update(time, deltaTime);
+    }
+
+    this.stats.end();
+  };
+}
+
+const scene = new Scene();
 export default scene;
