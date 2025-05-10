@@ -17,6 +17,7 @@ const Track = ({ title, cover, src, duration, artist, index }) => {
     const onClick = () => {
         audioController.play(src);
         scene.cover.setCover(cover);
+        scene.cd.setCover(cover);
     };
 
     return (

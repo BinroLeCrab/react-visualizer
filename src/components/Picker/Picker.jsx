@@ -18,6 +18,9 @@ const VISUALIZERS = [
     }, {
         name: "Cube",
         index: 4,
+    }, {
+        name: "CD",
+        index: 5,
     }
 ];
 

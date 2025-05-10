@@ -23,10 +23,8 @@ export default class Cover {
             vertexShader: vertexShader,
         });
 
-        console.log(this.material)
         this.mesh = new THREE.Points(this.geometry, this.material);
         this.group.add(this.mesh);
-        console.log(this.mesh);
 
     }
 
@@ -36,11 +34,9 @@ export default class Cover {
         this.texture = scene.textureLoader.load(src);
         // donner la texture au material
         // this.material.map = this.texture;
-        console.log(this.material.uniforms)
         this.material.uniforms.uMap.value = this.texture;
         // force la recompilation du material
         this.material.needsUpdate = true;
-        console.log(this.texture);
 
     }
 
