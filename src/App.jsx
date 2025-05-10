@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Landing />
-      {/* <Dropzone /> */}
+      <Dropzone /> 
       <Picker />
       <Tracks />
       <Canvas />

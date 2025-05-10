@@ -1,25 +1,52 @@
 .picker {
     position: fixed;
-    top: 24px;
-    right: 24px;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 48px;
     flex-direction: column;
     display: flex;
     flex-direction: column;
     color: white;
+    border-left: 1px solid white;
     align-items: flex-end;
     z-index: 2;
 
-    span {
-        text-transform: uppercase;
+    .item {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 48px;
+        height: 48px;
+        border-bottom: 1px solid white;
+        padding: 8px;
+        gap: 8px;
         cursor: pointer;
-        font-weight: bold;
-        padding: 0.25rem;
-        opacity: 0.5;
-        transition: all 0.2s;
+        overflow: hidden;
+
+        .icon {
+            display: block;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.2s;
+            text-wrap: nowrap;
+        }
+
+        &.current {
+            background-color: white;
+            gap: 16px;
+            overflow: visible;
+
+            .icon {
+                filter: invert(1);
+            }
+        }
     }
 
-    .current {
-        text-decoration: underline;
-        opacity: 1;
-    }
+    
+
+    
 }
