@@ -7,7 +7,7 @@ export default class Cd {
 
         this.group = null;
 
-        this.matcap = scene.textureLoader.load('/textures/image3.png', (texture) => {
+        this.matcap = scene.textureLoader.load('/textures/philipsDisk.png', (texture) => {
             texture.flipY = false;
         });
 

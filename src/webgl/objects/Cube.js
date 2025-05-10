@@ -22,13 +22,15 @@ export default class Cube {
         if (audioController.bpm) {
             this.count += deltaTime * 0.001;
 
+            this.group.scale.x += 0.005;
+            this.group.scale.y += 0.005;
+            this.group.scale.z += 0.005;
+
             if (this.count > 60 / audioController.bpm) {
-                
+
                 this.material.color.setRGB(Math.random(), Math.random(), Math.random());
-                this.group.scale.x+= 0.1;
-                this.group.scale.y+= 0.1;
-                this.group.scale.z+= 0.1;
-                
+
+
                 this.count = 0;
                 this.beatCount++;
 
@@ -41,7 +43,7 @@ export default class Cube {
                 }
             }
         }
-        
+
         this.group.rotation.x += 0.003;
         this.group.rotation.y += 0.003;
     }
