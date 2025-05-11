@@ -37,9 +37,21 @@ const Track = ({ title, cover, src, duration, artist, index, variant }) => {
                 </div>
                 <span className={s.duration}>{getSeconds()}</span>
             </div>
-        ) : (
-            ""
-        )
+        ) : variant === "grid" ? (
+            <div className={s.trackGrid} onClick={onClick}>
+                <img src={cover} alt="" className={s.cover} />
+                <div className={s.details}>
+                    <span className={s.trackName}>{title}</span>
+                    {artist && (
+                        <span className={s.artistName}>
+                            {artist.name}
+                        </span>
+                    )}
+                </div>
+                <img src="textures/CD.png" alt="" className={s.cd} />
+                {/* <span className={s.duration}>{getSeconds()}</span> */}
+            </div>
+        ) : null
     );
 };
 

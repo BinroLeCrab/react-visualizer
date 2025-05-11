@@ -9,7 +9,7 @@
     align-items: center;
     color: white;
     background-color: rgba(black, 0.8);
-    border-top: 1px solid white;
+    border-top: 1px solid rgba(white, 0.8);
     z-index: 2;
 }
 
@@ -26,7 +26,7 @@
     color: white;
     text-transform: uppercase;
     z-index: 2;
-    border-right: 1px solid white;
+    border-right: 1px solid rgba(white, 0.8);
     transition: 0.2s;
 
     &:hover {

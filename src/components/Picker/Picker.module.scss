@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     color: white;
-    border-left: 1px solid white;
+    border-left: 1px solid rgba(white, 0.8);
     align-items: flex-end;
     z-index: 2;
     background-color: rgba(black, 0.8);
@@ -19,7 +19,7 @@
         justify-content: right;
         width: 48px;
         height: 48px;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid rgba(white, 0.8);
         padding: 8px;
         gap: 16px;
         cursor: pointer;
@@ -35,6 +35,7 @@
             transition: 0.2s;
             text-wrap: nowrap;
             opacity: 0;
+            pointer-events: none;
         }
 
         &:hover {
@@ -42,7 +43,8 @@
             overflow: visible;
 
             span {
-                opacity: 1;
+                opacity: 0.5;
+                pointer-events: all;
             }
         }
 
@@ -56,6 +58,7 @@
 
             span {
                 opacity: 1;
+                pointer-events: all;
             }
         }
     }

@@ -6,11 +6,12 @@ import fetchJsonp from "fetch-jsonp";
 import useStore from "../../utils/store";
 import { fetchMetadata } from "../../utils/utils";
 import TRACKS from "../../utils/TRACKS";
-import { Cross, MagnifyingGlass, X } from "@phosphor-icons/react";
+import { GridFour, ListDashes, MagnifyingGlass, X } from "@phosphor-icons/react";
 
 const Tracks = ({ showTracks, setShowTracks }) => {
     // permet d'alterner entre true et false pour afficher / cacher le composant
     const { tracks, setTracks, constTracks, setConstTracks } = useStore();
+    const [vue, setVue] = useState("grid");
 
     // écouter la variable tracks qui vient du store
     useEffect(() => {
@@ -64,6 +65,11 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                 className={`
                 ${s.wrapper}
                 ${showTracks ? s.wrapper_visible : ""}`}
+                onClick={(e) => {
+                    if (e.target === e.currentTarget) {
+                        setShowTracks(false);
+                    }
+                }}
             >
                 <div className={s.tracksPopup}>
                     <div className={s.popupHeader}>
@@ -74,6 +80,20 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                             className={s.searchInput}
                             onKeyDown={onKeyDown}
                         />
+                        <div className={s.vue}>
+                            <button
+                                className={`${s.vueButton} ${vue === "grid" ? s.active : ""}`}
+                                onClick={() => setVue("grid")}
+                            >
+                                <GridFour size={32} color="currentColor" />
+                            </button>
+                            <button
+                                className={`${s.vueButton} ${vue === "list" ? s.active : ""}`}
+                                onClick={() => setVue("list")}
+                            >
+                                <ListDashes size={32} color="currentColor" />
+                            </button>
+                        </div>
                         <div
                             className={s.closeButton}
                             onClick={() => setShowTracks(false)}
@@ -81,27 +101,47 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                             <X size={32} color="currentColor" />
                         </div>
                     </div>
+                    {
+                        vue === "list" ? (
+                            <div className={s.tracksList}>
+                                <div className={s.header}>
+                                    <span className={s.order}>#</span>
+                                    <span className={s.title}>Titre</span>
+                                    <span className={s.duration}>Durée</span>
+                                </div>
 
-                    <div className={s.tracksList}>
-                        <div className={s.header}>
-                            <span className={s.order}>#</span>
-                            <span className={s.title}>Titre</span>
-                            <span className={s.duration}>Durée</span>
-                        </div>
+                                {tracks.map((track, i) => (
+                                    <Track
+                                        variant="list"
+                                        key={track.title + i}
+                                        title={track.title}
+                                        duration={track.duration}
+                                        cover={track.album.cover_xl}
+                                        artist={track?.artist}
+                                        src={track.preview}
+                                        index={i}
+                                    />
+                                ))}
+                            </div>
+                        ) : vue === "grid" ? (
+                            <div className={s.tracksGrid}>
 
-                        {tracks.map((track, i) => (
-                            <Track
-                                variant="list"
-                                key={track.title + i}
-                                title={track.title}
-                                duration={track.duration}
-                                cover={track.album.cover_xl}
-                                artist={track?.artist}
-                                src={track.preview}
-                                index={i}
-                            />
-                        ))}
-                    </div>
+                                {tracks.map((track, i) => (
+                                    <Track
+                                        variant="grid"
+                                        key={track.title + i}
+                                        title={track.title}
+                                        duration={track.duration}
+                                        cover={track.album.cover_xl}
+                                        artist={track?.artist}
+                                        src={track.preview}
+                                        index={i}
+                                    />
+                                ))}
+                            </div>
+                        ) : ""
+                    }
+
 
 
                 </div>

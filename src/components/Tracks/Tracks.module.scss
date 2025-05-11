@@ -4,7 +4,7 @@
     left: 0;
     overflow-y: auto;
     width: 100%;
-    height: 100vh;        
+    height: 100vh;
     background-color: rgba(black, 0.9);
     pointer-events: none;
     opacity: 0;
@@ -16,17 +16,16 @@
         pointer-events: all;
     }
 
-    
 
     .tracksPopup {
-        width: 75%;
+        width: calc(100% - 96px*2);
         margin: auto;
-        margin-top: 5vh;
-        height: 80vh;
-        border: 1px solid white;
+        margin-top: 48px;
+        height: calc(100vh - 96px*2);
         display: flex;
         flex-direction: column;
         color: white;
+        z-index: 3;
 
         .popupHeader {
             display: flex;
@@ -34,7 +33,7 @@
             align-items: center;
             height: 48px;
             min-height: 48px;
-            border-bottom: solid 1px white;
+            border: solid 1px rgba(white, 0.8);
 
             .searchIcon {
                 padding: 8px;
@@ -54,8 +53,43 @@
                 color: white;
             }
 
+            .vue {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 96px;
+                height: 48px;
+
+                .vueButton {
+                    display: flex;
+                    width: 48px;
+                    height: 48px;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    border-left: 1px solid rgba(white, 0.8);
+                    background-color: transparent;
+                    color: white;
+                    transition: all 0.2s;
+
+                    &:hover {
+                        background-color: rgba(white, 0.1);
+                    }
+
+                    &.active {
+                        background-color: white;
+                        color: black;
+
+                        &:hover {
+                            background-color: rgba(white, 0.8);
+                            color: black;
+                        }
+                    }
+                }
+            }
+
             .closeButton {
-                border-left: 1px solid white;
+                border-left: 1px solid rgba(white, 0.8);
                 color: white;
                 cursor: pointer;
                 min-width: 48px;
@@ -64,14 +98,17 @@
                 justify-content: center;
                 align-items: center;
                 transition: all 0.2s;
+
                 &:hover {
-                    background-color: rgba(white, 0.1);
+                    background-color: rgba(rgba(white, 0.8), 0.1);
                 }
             }
         }
-        
+
         .tracksList {
             overflow-y: auto;
+            padding: 0 48px 48px 48px;
+            margin-top: 48px;
             flex: 1;
         }
 
@@ -95,6 +132,18 @@
             .duration {
                 width: 20%;
             }
+        }
+
+        .tracksGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            padding: 48px;
+            padding-top: 64px;
+            width: 100%;
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
 }

@@ -17,7 +17,7 @@
         width: 50%;
         display: flex;
         gap: 12px;
-    
+
         .cover {
             height: 40px;
             width: 40px;
@@ -42,5 +42,131 @@
                 color: gray;
             }
         }
+    }
+}
+
+.trackGrid {
+    width: 100%;
+    padding: 1px 1px 1px 9%;
+    aspect-ratio: 285/260;
+    background-image: url('textures/Boitier-CD.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    opacity: 0.8;
+    border-radius: 5px;
+    position: relative;
+
+    transition: all 0.2s ease-in-out;
+
+
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        aspect-ratio: 1/1;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 45%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 70%, rgba(255, 255, 255, 0.03) 75%, rgba(255, 255, 255, 0.03) 100%);
+    }
+
+    .cover {
+        position: relative;
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1px 4px 4px 1px;
+    }
+
+    .details {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        opacity: 0;
+        transition: all 0.2s ease-in-out;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 2px;
+        color: white;
+        background-color: rgba(black, 0.8);
+        border: 1px solid rgba(white, 0.2);
+        backdrop-filter: blur(5px);
+        width: 88%;
+        padding: 4px 8px;
+        border-radius: 10px;
+        z-index: -2;
+
+        .trackName {
+            -webkit-line-clamp: 1;
+                    line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+                    box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .artistName {
+            font-size: 0.8rem;
+            color: gray;
+            -webkit-line-clamp: 1;
+                    line-clamp: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+                    box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+    }
+
+    .cd {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 80%;
+        aspect-ratio: 1/1;
+        border-radius: 100%;
+        pointer-events: none;
+        transition: all 0.2s ease-in-out;
+        z-index: -1;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        z-index: 1;
+        opacity: 1;
+        .details {
+            opacity: 1;
+            pointer-events: all;
+            transform: translate(-50%, calc(-100% - 10px));
+        }
+
+        .cd {
+            left: 80%;
+            animation: rotate 5s linear infinite;
+        }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }
