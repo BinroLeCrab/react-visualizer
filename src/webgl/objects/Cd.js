@@ -61,11 +61,14 @@ export default class Cd {
 
     }
 
-    update() {
-        const remappedFrequency = audioController.fdata[0] / 255;
+    update(time, deltaTime) {
+        const bassFrequency = audioController.fdata[0] / 255;
+        const highFrequency = audioController.fdata[255] /100;
 
-        const scale = 1 + remappedFrequency/5;
+        const scale = 1 + bassFrequency/5;
+        const intensity = 0.5 + highFrequency/2;
 
         this.group.scale.set(scale, scale, scale);
+        scene.bloomPass.strength = intensity;
     }
 }
