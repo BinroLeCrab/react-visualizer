@@ -35,7 +35,7 @@ class Scene {
     this.setupLights();
     this.setupRenderer();
     this.setupControls();
-    this.setupStats();
+    // this.setupStats();
     this.setupPostprocessing();
     // this.setupGUI();
 
@@ -251,7 +251,7 @@ class Scene {
   }
 
   tick = (time, deltaTime, frame) => {
-    this.stats.begin();
+    // this.stats.begin();
 
     this.composer.render(this.scene, this.camera);
 
@@ -259,7 +259,7 @@ class Scene {
       this.currentObject.update(time, deltaTime);
     }
 
-    this.stats.end();
+    // this.stats.end();
   };
 }
 
