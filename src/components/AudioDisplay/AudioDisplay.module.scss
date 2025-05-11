@@ -1,0 +1,60 @@
+.audioDisplay {
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(2, max-content) 1fr max-content;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 12px;
+    padding-left: 8px;
+    left: 0;
+    bottom: 48px;
+    width: calc(100% - 48px);
+    height: 49px;
+    border-top: 1px solid rgba(white, 0.8);
+    background-color: rgba(black, 0.8);
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s;
+    transform: translateY(100%);
+
+    .details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        
+        .cover {
+            display: block;
+            height: 32px;
+            width: 32px;
+            border-radius: 5px;
+        }
+    }
+
+    .progressBar {
+        height: 4px;
+        background-color: rgba(white, 0.2);
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: white;
+        }
+    }
+
+    .playButton {
+        margin: 0;
+        padding: 0;
+        color: white;
+        background-color: transparent;
+        border: none;
+    }
+
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0);
+    }
+}

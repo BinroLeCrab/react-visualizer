@@ -11,6 +11,11 @@ const useStore = create((set) => ({
         set(() => ({
             constTracks: _tracks,
         })),
+    currentTrack: {},
+    setCurrentTrack: (_track) =>
+        set(() => ({
+            currentTrack: _track,
+        })),
 }));
 
 export default useStore;

@@ -61,8 +61,6 @@
 
     transition: all 0.2s ease-in-out;
 
-
-
     &::after {
         content: '';
         display: block;
@@ -108,10 +106,10 @@
 
         .trackName {
             -webkit-line-clamp: 1;
-                    line-clamp: 1;
+            line-clamp: 1;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-                    box-orient: vertical;
+            box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
@@ -121,10 +119,10 @@
             font-size: 0.8rem;
             color: gray;
             -webkit-line-clamp: 1;
-                    line-clamp: 1;
+            line-clamp: 1;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-                    box-orient: vertical;
+            box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             max-width: 100%;
@@ -136,7 +134,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        height: 80%;
+        height: 90%;
         aspect-ratio: 1/1;
         border-radius: 100%;
         pointer-events: none;
@@ -147,8 +145,9 @@
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-        z-index: 1;
+        z-index: 2;
         opacity: 1;
+
         .details {
             opacity: 1;
             pointer-events: all;
@@ -160,12 +159,36 @@
             animation: rotate 5s linear infinite;
         }
     }
+
+    &.active {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        z-index: 1;
+        opacity: 1;
+
+        .cover {
+            opacity: 0.8;
+        }
+
+        .cd {
+            left: 54%;
+            z-index: 1;
+            animation: rotate 5s linear infinite;
+        }
+
+        &:hover {
+
+            .cd {
+                left: 54%;
+            }
+        }
+    }
 }
 
 @keyframes rotate {
     0% {
         transform: translate(-50%, -50%) rotate(0deg);
     }
+
     100% {
         transform: translate(-50%, -50%) rotate(360deg);
     }

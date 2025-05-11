@@ -137,6 +137,7 @@
         .tracksGrid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-rows: max-content;
             gap: 12px;
             padding: 48px;
             padding-top: 64px;

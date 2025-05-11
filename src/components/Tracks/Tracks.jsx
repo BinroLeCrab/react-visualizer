@@ -120,6 +120,7 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                                         artist={track?.artist}
                                         src={track.preview}
                                         index={i}
+                                        data={track}
                                     />
                                 ))}
                             </div>
@@ -136,6 +137,7 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                                         artist={track?.artist}
                                         src={track.preview}
                                         index={i}
+                                        data={track}
                                     />
                                 ))}
                             </div>

@@ -2,7 +2,7 @@ import gsap from "gsap";
 import detect from "bpm-detective";
 
 class AudioController {
-  constructor() {}
+  constructor() { }
 
   setup() {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -10,7 +10,6 @@ class AudioController {
     this.audio = new Audio();
     this.audio.crossOrigin = "anonymous";
     this.bpm = null;
-
 
     // this.audio.src = danceTheNight;
     this.audio.volume = 0.1;
@@ -52,9 +51,15 @@ class AudioController {
     // return bpm;
   };
 
-  play = (src) => {
+  play = (src, data) => {
     this.audio.src = src;
     this.audio.play();
+  };
+
+  reset = () => {
+    this.audio.pause();
+    this.audio.currentTime = 0;
+    this.audio.src = "";
   };
 
   tick = () => {

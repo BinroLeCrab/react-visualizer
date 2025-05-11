@@ -5,6 +5,7 @@ import Picker from "./components/Picker/Picker";
 import Dropzone from "./components/Dropzone/Dropzone";
 import { useState } from "react";
 import UiBottom from "./components/UiBottom/UiBottom";
+import AudioDisplay from "./components/AudioDisplay/AudioDisplay";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
 	return (
 		<>
 			<Landing />
+			<AudioDisplay />
 			<Picker />
 			<Dropzone />
 			<UiBottom showTracks={showTracks} setShowTracks={setShowTracks} />

@@ -7,12 +7,12 @@ export default class Cd {
 
         this.group = new THREE.Group();
 
-        this.matcap = scene.textureLoader.load('/textures/philipsDisk.png', (texture) => {
+        this.defaultcover = scene.textureLoader.load('/textures/philipsDisk.png', (texture) => {
             texture.flipY = false;
         });
 
         this.material = new THREE.MeshStandardMaterial({
-            map: this.matcap,
+            map: this.defaultcover,
         })
 
 
@@ -59,6 +59,11 @@ export default class Cd {
         // force la recompilation du material
         this.material.needsUpdate = true;
 
+    }
+
+    reset() {
+        this.material.map = this.defaultcover;
+        this.material.needsUpdate = true;
     }
 
     update(time, deltaTime) {
