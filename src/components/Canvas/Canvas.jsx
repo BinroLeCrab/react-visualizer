@@ -17,7 +17,7 @@ const Canvas = () => {
   }, []);
 
   return <>
-    <canvas ref={canvasRef}></canvas>;
+    <canvas ref={canvasRef}></canvas>
   </>
 };
 

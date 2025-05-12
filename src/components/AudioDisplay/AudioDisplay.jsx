@@ -1,7 +1,7 @@
 import useStore from "../../utils/store";
 import s from "./AudioDisplay.module.scss";
 import audioController from "../../utils/AudioController";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import scene from "../../webgl/Scene";
 import Tempo from "../Tempo/Tempo";
@@ -53,11 +53,19 @@ const AudioDisplay = () => {
         }
     }
 
+    useEffect(() => {
+        if (currentTrack?.id) {
+            setIsPlaying(true);
+        } else {
+            setIsPlaying(false);
+        }
+    }, [currentTrack]);
+
     return (
         <div className={`${s.audioDisplay} ${currentTrack?.id ? s.active : ""}`}>
             <div className={s.details}>
                 <img src={currentTrack?.album?.cover_xl} alt="" className={s.cover} />
-                <span className={s.trackInfo}>{currentTrack?.title} - {currentTrack?.artist?.name}</span>
+                <span className={s.trackInfo}>{currentTrack?.title} - <span className={s.artist}>{currentTrack?.artist?.name}</span></span>
             </div>
             <button className={s.playButton} onClick={playPause}>
                 {isPlaying ? (

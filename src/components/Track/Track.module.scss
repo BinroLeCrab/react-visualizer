@@ -3,7 +3,10 @@
     align-items: center;
     color: white;
     padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid rgba(white, 0);
 
     &:hover {
         background-color: rgba(white, 0.1);
@@ -42,6 +45,12 @@
                 color: gray;
             }
         }
+    }
+
+    &.active {
+        background-color: #151515;
+        border: 1px solid rgba(white, 0.8);
+        color: white;
     }
 }
 

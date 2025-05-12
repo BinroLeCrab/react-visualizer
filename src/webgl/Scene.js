@@ -25,7 +25,7 @@ class Scene {
   setup(canvas) {
     this.canvas = canvas;
     this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.height = window.innerHeight - 48;
 
     this.currentObject = null;
 
@@ -145,7 +145,7 @@ class Scene {
 
   onResize = () => {
     this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.height = window.innerHeight - 48;
 
     this.camera.aspect = this.width / this.height;
     this.camera.updateProjectionMatrix();

@@ -110,7 +110,7 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                                     <span className={s.duration}>Durée</span>
                                 </div>
 
-                                {tracks.map((track, i) => (
+                                {tracks.length > 0 ? tracks.map((track, i) => (
                                     <Track
                                         variant="list"
                                         key={track.title + i}
@@ -122,12 +122,19 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                                         index={i}
                                         data={track}
                                     />
-                                ))}
+                                )) : <>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                </>
+                                }
                             </div>
                         ) : vue === "grid" ? (
                             <div className={s.tracksGrid}>
 
-                                {tracks.map((track, i) => (
+                                {tracks.length > 0 ? tracks.map((track, i) => (
                                     <Track
                                         variant="grid"
                                         key={track.title + i}
@@ -139,7 +146,14 @@ const Tracks = ({ showTracks, setShowTracks }) => {
                                         index={i}
                                         data={track}
                                     />
-                                ))}
+                                )) : <>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                    <div className={s.loaderItem}></div>
+                                </>
+                                }
                             </div>
                         ) : ""
                     }

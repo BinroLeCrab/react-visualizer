@@ -22,7 +22,7 @@ const Dropzone = () => {
                 const _track = {
                     name: file.name,
                     path: path,
-                    id: tracks.length + i,
+                    id: tracks.length + i +1,
                 };
 
                 tracksArray.push(_track);
