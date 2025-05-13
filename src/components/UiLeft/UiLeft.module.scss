@@ -1,0 +1,38 @@
+.uiLeft {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: calc(100vh - 48px);
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    border-right: 1px solid rgba(white, 0.8);
+    z-index: 2;
+    background-color: rgba(black, 0.8);
+
+    .volume {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        padding: 8px;
+        gap: 12px;
+
+        .volumeRange {
+            transform: translateY(-50%) rotateZ(-90Deg);
+            height: 4px;
+            border: none;
+            border-radius: 0;
+            background: rgba(white, 0.2);
+            -webkit-appearance: none;
+            padding: 0;
+            outline: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+    }
+}

@@ -6,6 +6,7 @@ import Dropzone from "./components/Dropzone/Dropzone";
 import { useState } from "react";
 import UiBottom from "./components/UiBottom/UiBottom";
 import AudioDisplay from "./components/AudioDisplay/AudioDisplay";
+import UiLeft from "./components/UiLeft/UiLeft";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
 			<Landing />
 			<AudioDisplay />
 			<Picker />
+			<UiLeft />
 			<Dropzone />
 			<UiBottom showTracks={showTracks} setShowTracks={setShowTracks} />
 			<Tracks showTracks={showTracks} setShowTracks={setShowTracks} />
