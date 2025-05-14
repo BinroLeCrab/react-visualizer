@@ -7,6 +7,7 @@ import { useState } from "react";
 import UiBottom from "./components/UiBottom/UiBottom";
 import AudioDisplay from "./components/AudioDisplay/AudioDisplay";
 import UiLeft from "./components/UiLeft/UiLeft";
+import InfoPopUp from "./components/InfoPopUp/InfoPopUp";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
 			<UiBottom showTracks={showTracks} setShowTracks={setShowTracks} />
 			<Tracks showTracks={showTracks} setShowTracks={setShowTracks} />
 			<Canvas />
+			<InfoPopUp />
 		</>
 	);
 }

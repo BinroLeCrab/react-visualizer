@@ -5,6 +5,7 @@
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
     z-index: 10;
     color: white;
     display: flex;
@@ -15,22 +16,43 @@
     transition: 0.5s;
 
     .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         transition: 0.5s;
+        gap: 24px;
+
+        .paragraph {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
     }
 
     .title {
         font-size: 4rem;
     }
 
+    .subtitle {
+        font-size: 1.25rem;
+        margin-top: -18px;
+    }
+
     p {
         margin: 0;
+        width: 80vw;
+        max-width: 800px;
     }
 }
 
 .landingPage--Hidden {
     background-color: rgba(0, 0, 0, 0);
     pointer-events: none;
-    
+    backdrop-filter: none;
+
     .wrapper {
         opacity: 0;
         transform: translateY(100%);

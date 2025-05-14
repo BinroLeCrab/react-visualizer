@@ -1,0 +1,194 @@
+.InfoPopUp--Btn, .InfoPopUp {
+    --color-neutral-50: #FDFCFE;
+    --color-neutral-100: #F5F2F8;
+    --color-neutral-700: #3D3C41;
+    --color-neutral-800: #29282D;
+    --color-neutral-900: #1B191F;
+    --color-neutral-950: #0F0D13;
+    --color-neutral-950-20: #0e0c1233;
+}
+
+.InfoPopUp--Btn {
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 9;
+    color: white;
+    background-color: transparent;
+    border: 0;
+    padding: 8px;
+    width: 48px;
+    height: 48px;
+    border-bottom: 1px solid rgba(white, 0.8);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+        background-color: rgba(white, 0.2);
+    }
+
+    &.active {
+        background-color: white;
+        color:black;
+    }
+}
+
+.InfoPopUp--Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    width: 100vw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    transition: 0.2s ease-in-out;
+}
+
+.InfoPopUp {
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 8;
+    background-color: var(--color-neutral-900);
+    border-radius: 20px;
+    width: 95vw;
+    max-width: 1000px;
+    overflow: hidden;
+    color: var(--color-neutral-50);
+    transition: 0.2s ease-in-out;
+
+    display: grid;
+
+    a {
+        text-decoration: none;
+        color: var(--color-neutral-50);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        ul {
+            flex: 1;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-content: flex-end;
+
+            li {
+                background-color: var(--color-neutral-800);
+                padding: 5px 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+
+    &__social {
+        background-color: var(--color-neutral-800);
+        display: grid;
+        grid-template-columns: -webkit-min-content 1fr;
+        grid-template-columns: min-content 1fr;
+        grid-template-rows: repeat(2, -webkit-min-content);
+        grid-template-rows: repeat(2, min-content);
+        align-items: center;
+        padding: 40px 20px;
+        gap: 20px;
+
+        &__picture {
+            width: 80px;
+            -o-object-fit: cover;
+               object-fit: cover;
+            aspect-ratio: 1/1;
+            border-radius: 500px;
+            grid-row: 1/-1;
+        }
+
+        &__name h2 {
+            font-size: 1.25rem;
+        }
+
+        &__links {
+            display: flex;
+            gap: 10px;
+
+            &__Item {
+                background-color: var(--color-neutral-50);
+                color: var(--color-neutral-900) !important;
+                padding: 8px;
+                border-radius: 50px;
+                transition: 0.2s ease-in-out;
+                cursor: pointer;
+
+                &.prtf {
+                    background-color: #264de4;
+                    color: var(--color-neutral-50) !important;
+                }
+
+                &.lkdin {
+                    background-color: #2461C2;
+                    color: var(--color-neutral-50) !important;
+                }
+
+                &:hover {
+                    background-color: var(--color-neutral-950) ;
+                    color: var(--color-neutral-50) !important;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 448px) {
+    .InfoPopUp {
+        &__social__picture {
+            width: 150px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .InfoPopUp {
+        grid-template-columns: 4fr 2fr;
+
+        &__content h1 {
+            font-size: 2rem;
+        }
+
+        &__social {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 20px;
+
+            &__picture {
+                width: 70%;
+            }
+
+            &__name {
+                text-align: center;
+
+                h2 {
+                    font-size: 1.5rem;
+                }
+            }
+
+        }
+    }
+}

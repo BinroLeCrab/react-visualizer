@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
+  margin: 0;
 }
 
 :root {
@@ -37,4 +38,8 @@ button {
 
 svg {
   display: block;
+}
+
+.italic {
+  font-style: italic;
 }
