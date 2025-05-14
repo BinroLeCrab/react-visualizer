@@ -22,17 +22,78 @@
         gap: 12px;
 
         .volumeRange {
-            transform: translateY(-50%) rotateZ(-90Deg);
-            height: 4px;
-            border: none;
-            border-radius: 0;
-            background: rgba(white, 0.2);
+            --value: 0%;
+            transform: translateY(-75px) rotateZ(-90Deg);
+
             -webkit-appearance: none;
-            padding: 0;
-            outline: none;
-            color: white;
+            appearance: none;
+            background: transparent;
             cursor: pointer;
+            width: 150px;
+
+            /* Removes default focus */
+            &:focus {
+                outline: none;
+            }
+
+            /******** Chrome, Safari, Opera and Edge Chromium styles ********/
+            /* slider track */
+            &::-webkit-slider-runnable-track {
+                background: linear-gradient(90deg, rgba(white, 0.8) var(--value), rgba(white, 0.2) var(--value));
+                border-radius: 0rem;
+                height: 4px;
+            }
+
+            /* slider thumb */
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                /* Override default look */
+                appearance: none;
+                margin-top: -6px;
+                /* Centers thumb on the track */
+                background-color: white;
+                border-radius: 0.5rem;
+                height: 1rem;
+                width: 0.5rem;
+            }
+
+            /*********** Firefox styles ***********/
+            /* slider track */
+            &::-moz-range-track {
+                background: linear-gradient(90deg, rgba(white, 0.8) var(--value), rgba(white, 0.2) var(--value));
+                border-radius: 0rem;
+                height: 4px;
+            }
+
+            /* slider thumb */
+            &::-moz-range-thumb {
+                background-color: white;
+                border: none;
+                /*Removes extra border that FF applies*/
+                border-radius: 0.5rem;
+                height: 1rem;
+                width: 0.5rem;
+            }
+        }
+
+        .volumeButton {
+            padding: 0;
+            color: white;
+            background-color: transparent;
+            border: none;
+            padding: 4px;
+            margin: 0 -4px;
+            border-radius: 5px;
             transition: all 0.2s;
+
+            &:hover {
+                background-color: rgba(white, 0.2);
+            }
+
+            &.active {
+                background-color: white;
+                color: black;
+            }
         }
     }
 }
