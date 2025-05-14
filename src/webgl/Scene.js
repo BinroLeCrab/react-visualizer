@@ -34,7 +34,7 @@ class Scene {
     this.setupCamera();
     this.setupLights();
     this.setupRenderer();
-    this.setupControls();
+    // this.setupControls();
     // this.setupStats();
     this.setupPostprocessing();
     // this.setupGUI();
@@ -105,6 +105,10 @@ class Scene {
 
   setupControls() {
     this.controls = new OrbitControls(this.camera, this.canvas);
+    this.controls.enableZoom = false;
+    this.controls.enablePan = false;
+    this.controls.maxPolarAngle = Math.PI / 2;
+    this.controls.minPolarAngle = Math.PI / 2;
   }
 
   setupStats() {
