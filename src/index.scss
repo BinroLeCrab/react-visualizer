@@ -43,3 +43,9 @@ svg {
 .italic {
   font-style: italic;
 }
+
+@media (max-width: 770px) {
+  * {
+    font-size: 1rem;
+  }
+}

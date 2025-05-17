@@ -27,8 +27,6 @@ class Scene {
     this.width = window.innerWidth;
     this.height = window.innerHeight - 48;
 
-    this.currentObject = null;
-
     // instantier la logique three.js
     this.setupScene();
     this.setupCamera();
@@ -127,7 +125,7 @@ class Scene {
     this.ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.8);
     this.scene.add(this.ambientLight);
   }
-  
+
   addObjects() {
     // Line
     this.line = new Line();
@@ -138,7 +136,7 @@ class Scene {
     this.cd = new Cd();
     // ....
 
-    this.camera.position.z = 2;
+    this.camera.position.z = this.width < 600 ? 2.5 : 2;
 
     this.scene.add(this.cd.group);
     this.currentObject = this.cd;
@@ -199,7 +197,7 @@ class Scene {
         this.bloomPass.strength = 0.74;
         this.bloomPass.radius = 0.2;
         this.currentObject = this.cover;
-        this.camera.position.z = 10;
+        this.camera.position.z = this.width < 600 ? 15 : 10;
         break;
       case 1:
         // Line
@@ -207,7 +205,7 @@ class Scene {
         this.bloomPass.strength = 0.74;
         this.bloomPass.radius = 0.2;
         this.currentObject = this.line;
-        this.camera.position.z = 150;
+        this.camera.position.z = this.width < 600 ? 400 : 150;
         break;
 
       case 2:
@@ -216,7 +214,7 @@ class Scene {
         this.bloomPass.strength = 0.5;
         this.bloomPass.radius = 0.85;
         this.currentObject = this.board;
-        this.camera.position.z = 20;
+        this.camera.position.z = this.width < 600 ? 30 : 20;
         break;
 
       case 3:
@@ -225,7 +223,7 @@ class Scene {
         this.bloomPass.strength = 1.008;
         this.bloomPass.radius = 0.545;
         this.currentObject = this.logoIut;
-        this.camera.position.z = 5;
+        this.camera.position.z = this.width < 600 ? 8 : 5;
         break;
 
       case 4:
@@ -243,7 +241,7 @@ class Scene {
         this.bloomPass.strength = 0.5;
         this.bloomPass.radius = 0.1;
         this.currentObject = this.cd;
-        this.camera.position.z = 2;
+        this.camera.position.z = this.width < 600 ? 2.5 : 2;
         break;
 
       default:

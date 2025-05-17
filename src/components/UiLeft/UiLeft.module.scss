@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: calc(100vh - 48px);
+    height: calc(100dvh - 48px);
     width: 48px;
     display: flex;
     flex-direction: column;
@@ -93,6 +93,26 @@
             &.active {
                 background-color: white;
                 color: black;
+            }
+        }
+    }
+}
+
+@media (max-width: 770px) {
+    .uiLeft {
+        top: auto;
+        left: auto;
+        bottom: 48px;
+        right: 0;
+        border: none;
+        height: 48px;
+        width: 48px;
+        background-color: transparent;
+        
+        .volume {
+
+            .volumeRange {
+                display: none;
             }
         }
     }

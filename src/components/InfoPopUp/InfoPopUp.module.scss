@@ -192,3 +192,9 @@
         }
     }
 }
+
+@media (max-width: 770px) {
+    .InfoPopUp--Btn {
+        border-right: 1px solid rgba(white, 0.8);
+    }
+}

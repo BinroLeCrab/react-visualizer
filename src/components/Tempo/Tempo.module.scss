@@ -4,3 +4,10 @@
     margin: 0;
     margin-left: auto;
 }
+
+@media (max-width: 770px) {
+    .tempo {
+        grid-area: b;
+    }
+    
+}

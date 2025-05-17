@@ -84,3 +84,38 @@
         transform: translateY(0);
     }
 }
+
+@media (max-width: 770px) {
+    .audioDisplay {
+        width: 100%;
+        left: 0;
+        grid-template-columns: max-content 1fr auto;
+        grid-template-rows: repeat(2, 32px);
+        grid-template-areas:
+            "a p b"
+            "d d d";
+        height: 96px;
+        gap: 16px 24px;
+
+        .details {
+            grid-area: d;
+            justify-content: flex-start;
+            padding-right: 56px;
+            
+            span {
+                overflow: hidden;
+                width: 100%;
+            }
+        }
+
+        .actions {
+            grid-area: a;
+        }
+
+        .progressBar {
+            grid-area: p;
+        }
+
+
+    }
+}

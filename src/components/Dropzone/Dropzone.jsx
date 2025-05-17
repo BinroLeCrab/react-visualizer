@@ -73,7 +73,7 @@ const Dropzone = () => {
                 </p>
                 <button className={s.btn} onClick={open}>
                     <MusicNotesPlus size={32} color="currentColor" />
-                    Importer
+                    <span>Importer</span>
                 </button>
             </div>
         </>

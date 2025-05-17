@@ -207,3 +207,29 @@
         transform: translate(-50%, -50%) rotate(360deg);
     }
 }
+
+@media (max-width: 770px) {
+    .trackList {
+        .title {
+            width: 70%;
+            .details {
+                .trackName {
+                    width: 200px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .trackList {
+        .title {
+            width: 70%;
+            .details {
+                .trackName {
+                    width: 150px;
+                }
+            }
+        }
+    }
+}
